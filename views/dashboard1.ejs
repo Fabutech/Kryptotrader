@@ -1,0 +1,35 @@
+<%- include("partials/header") -%>
+
+<section class="home">
+    <div class="text">Dashboard Sidebar</div>
+    <div class="token-data">
+        <table>
+            <tbody>
+                <% tokens.forEach((token) => { %>
+                    <tr>
+                        <td>
+                            <%= token.ranked %>
+                        </td>
+                        <td>
+                            <%= token.name %>
+                        </td>
+                        <td>
+                            <%= token.price %>
+                        </td>
+                        <td>
+                            <%= token.market_cap %>
+                        </td>
+                        <td>
+                            <%= token.volume_24h %>
+                        </td>
+                        <td>
+                            <%= token.circulating_supply %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<%- include("partials/footer") -%>

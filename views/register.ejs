@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/registerstyle.css">
+
+    <!-- Boxicons CSS -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body> 
+    <div class="header"> 
+      <div class="logocont">
+        <a href="https://de.wikipedia.org/wiki/Informatik" class="logo">
+          Ergänzungsfach Informatik
+        </a>
+      </div>
+    </div>
+
+    <div class="content">
+        
+      <div class="bottomCont">
+
+        <div class="form signup">
+          <div class="form-content">
+
+            <header>Signup</header>
+
+            <form action="/register" method="post">
+              <div class="field input-field">
+                <input name="username" type="username" placeholder="Nutzername" class="input" id="un">
+              </div>
+
+              <div class="field input-field">
+                <input name="pw1" type="password" placeholder="Passwort" class="password pw1">
+              </div>
+
+              <div class="field input-field">
+                <input name="pw2" type="password" placeholder="Passwort wiederholen" class="password pw2">
+                <i class='bx bx-hide eye-icon'></i>
+              </div>
+
+              <% if (wrong == 1) { %>
+                <div id="notSamePw"><i>Die Passwörter sind nicht identisch!</i></div>
+              <% } else if (wrong == 2) { %>
+                <div id="notSamePw"><i>Dieser Username wird bereits verwendet!</i></div>
+              <% } %>
+
+              <div class="field button-field">
+                <button type="submit">Signup</button>
+              </div>
+
+              <div class="form-link">
+                <span>Hast du bereits einen Account? <a href="/" class="link signup-link">Login</a></span>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+        
+    </div>
+
+    <div class="footer">
+        <div class="copyright">Copyright © Fabutech, mglhbr, ncwthrch 2023</div>
+    </div>
+
+    <!--JavaScript-->
+    <script src="../js/hide-show.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange</title>
+    <link rel="icon" type="image/doge-icon" href="../img/favicon.ico"> <!--such wow! doge :)-->
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/dashboardstyle.css">
+    <link rel="stylesheet" href="../css/exchangestyle.css">
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <script type="text/javascript" src="../js/input.js"></script>
+</head>
+<body>
+    <%- include("partials/navbar") -%>
+
+    <section class="home">
+        <div class="text">Exchange</div>
+
+        <div class="bottomCont forms">
+
+            <!--html for the buy-crypto form-->
+            <div class="form sell-crypto">
+                <% if (action == 1) { %>
+                    <div style="color: green">Successfully bought crypto</div>
+                <% } else if (action == 2) { %>
+                    <div style="color: green">Successfully sold crypto</div>
+                <% } else if (action == -1) { %>
+                    <div style="color: red">Your account balance is to low!</div>
+                <% } %>
+                <form action="/sell" method="post">
+                    <div class="desc">Sell Crypto</div>
+                    <div>From</div>
+                    <div class="field input-field">
+                        <select name="cryptos" id="select">
+                        <% portfolio.forEach((asset) => { %>
+                            <option value="<%= asset.token %>"><%= asset.token %></option>
+                        <% }) %>
+                        </select>
+
+                      <input name="amount" type="number" step="0.000000000001" min=0 max=9999 placeholder="Amount" class="input"> 
+                    </div>
+                    <!-- <div class="available"> 
+                        <div>Available:</div>
+                        <div class="inputavailable">0.0001</div> 
+                        <div class="inputcrypto"> BTC</div> 
+                    </div> -->
+
+                    <div class="forexchangebtn">
+                        <i class='bx bx-transfer-alt exchangebtn' ></i>
+                    </div>
+
+                    <div>To</div>
+                    <div class="field input-field flex">
+                    <div id="usd">$USD</div>
+                    <input type="number" placeholder="Amount" class="input" readonly> <!--placeholder = calculated value-->
+                    </div>
+    
+                  <div class="field button-field">
+                    <button id="test">Convert!</button>
+                  </div>
+                  <input name="userId" value="<%= userId %>" type="hidden">
+                </form>
+            </div>
+
+            <!--Sell Crypto only shows when button is clicked-->
+            <div class="form buy-crypto">
+                <% if (action == 1) { %>
+                    <div style="color: green">Successfully bought crypto</div>
+                <% } else if (action == 2) { %>
+                    <div style="color: green">Successfully sold crypto</div>
+                <% } else if (action == -1) { %>
+                    <div style="color: red">Your account balance is to low!</div>
+                <% } %>
+                <form action="/buy" method="post">
+                    <div class="desc">Buy Crypto</div>
+                    <div>From</div>
+                    <div class="field input-field flex">
+                        <div id="usd">$USD</div>
+                      <input onchange="inp1();" id="input1" name="amount" type="number" step="0.01" min=0 max=9999 placeholder="Amount" class="input inp1-usd"> <!--oninput="calcInp1()"-->
+                    </div>
+                    <div class="available"> 
+                        <div>Available:</div>
+                        <div class="inputavailable"><%= userBalance.toFixed(2) %></div> <!--Input available balance of crypto here-->
+                        <div class="inputcrypto"> $USD</div> <!--Input cryptom abbreviation-->
+                    </div>
+
+                    <div class="forexchangebtn">
+                        <i class='bx bx-transfer-alt exchangebtn' ></i>
+                    </div>
+
+                    <div>To</div>
+                    <div class="field input-field">
+                    <select name="cryptos" id="select">
+                        <% tokens.forEach((token) => { %>
+                            <option value="<%= token.name_short %>"><%= token.name_short %></option>
+                        <% }) %>
+                    </select>
+                    <input type="number" placeholder="Amount" class="input inp1-crypto" readonly> <!--placeholder = calculated value-->
+                    </div>
+    
+                  <div class="field button-field">
+                    <button id="test">Convert!</button>
+                  </div>
+                  <input name="userId" value="<%= userId %>" type="hidden">
+                </form>
+            </div>
+        
+    </section>
+
+    <!-- <script>
+        var input = document.getElementById("input1");
+        input.addEventListener("keydown", function (e) {
+         const i = "<%= tokens %>";
+         console.log(i);
+       });
+    </script> -->
+
+    <!--JavaScript-->
+    <script src="../js/navbar.js"></script>
+    <script src="../js/convert.js"></script>
+</body>
+</html>

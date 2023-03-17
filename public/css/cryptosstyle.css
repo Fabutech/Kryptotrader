@@ -1,0 +1,74 @@
+.home .long-card {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    margin: 8px 60px;
+    background-color: var(--sidebar-color);
+    border-radius: 6px;
+    height: 100px;
+    transition: var(--tran-05); /*soft transition*/
+    box-sizing: border-box;
+}
+
+.home .description-card {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    margin: 12px 60px;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    height: 30px;
+    transition: var(--tran-05); /*soft transition*/
+    box-sizing: border-box;
+}
+
+
+.testing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-width: 100;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    max-width: 100;
+    padding: 5px;
+    text-align: center;
+    color: var(--sidebar-color);
+}
+
+body.dark .desc {
+    color: var(--text-color); /*for dark mode*/
+}
+
+.description-card .number,
+.long-card .number {
+    max-width: 50px; /*so that number card doesnt use much space*/
+}
+
+.testing .crypto-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.crypto-icon img {  /*so that the icon is sized decently*/
+    width: 35px;
+}
+
+.crypto-abbreviation {
+    font-style: oblique;
+    font-weight: bolder;
+}
+
+home {
+    padding-bottom: 15px;
+}

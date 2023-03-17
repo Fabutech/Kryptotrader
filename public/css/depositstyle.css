@@ -1,0 +1,101 @@
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottomCont {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 0;
+  }
+
+  .form {
+    border-radius: 6px;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    padding: 30px;
+    transition: var(--tran-05); /*soft transition*/
+  }
+
+  .form-text {
+    font-size: 50px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+  }
+
+  .big-icon {
+    font-size: 250px;
+    height: 260px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+  }
+
+  form {
+    margin-top: 30px;
+    box-sizing: border-box;
+  }
+
+  form .field {
+    height: 45px;
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+  }
+
+  .field button,
+  .field input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+  }
+
+  .field input{
+    outline: none;
+    padding: 0 15px;
+    text-align: center;
+    border: 1px solid var(--text-color);
+    width: 400px;
+  }
+
+  .field input:focus {
+    border-bottom-width: 2px;
+  }
+
+  .field button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    font-weight: bold;
+  }
+
+  body.dark .field button {
+    background-color: var(--text-color); /*for dark mode variant*/
+    color: var(--sidebar-color);
+  }
+
+  .field button:hover {
+    background-color: #a39bf8;
+  }
+
+  body.dark .field button:hover {
+    background-color: #969595; /*for dark mode variant*/
+  }
+
+.added{
+  padding: 2%;
+  color: green;
+}
+
+.text{
+  margin-bottom: 0 !important;
+}

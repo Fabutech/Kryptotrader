@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orderbook</title>
+    <link rel="icon" type="image/doge-icon" href="../img/favicon.ico"> <!--such wow! doge :)-->
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/dashboardstyle.css">
+    <link rel="stylesheet" href="../css/orderbookstyle.css">
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <%- include("partials/navbar") -%>
+
+    <section class="home">
+        <div class="text">Orderbook</div>
+
+        <div class="description-card"> <!--description header for the different cryptos-->
+            <div class="desc">Date</div>
+            <div class="desc">Type</div>
+            <div class="desc">Currency</div>
+            <div class="desc">Price at Time</div>
+            <div class="desc">Balance change (Crypto)</div>
+            <div class="desc">Balance change ($USD)</div>
+        </div>
+    
+        <!--Template for "Sell Crypto" action-->
+        <% transactions.forEach((transaction) => { %>
+            <div class="long-card">
+                <div class="testing"><%= transaction.date %></div>
+                <div class="testing"><%= transaction.transaction_type %></div>
+                <div class="testing"><%= transaction.currency %></div>
+                <div class="testing"><%= transaction.price_at_time %></div>
+                <div class="testing"><%= Number(transaction.balance_change_crypto).toFixed(2) %></div>
+                <div class="testing"><%= Number(transaction.balance_change_usd).toFixed(2) %></div>
+            </div>
+        <% }) %>
+
+        <div class="spacer"></div> <!--so cards have a bit of space on bottom-->
+    </section>
+
+    <!--JavaScript-->
+    <script src="../js/navbar.js"></script>
+
+</body>
+</html>

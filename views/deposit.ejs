@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit cash</title>
+    <link rel="icon" type="image/doge-icon" href="../img/favicon.ico"> <!--such wow! doge :)-->
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/dashboardstyle.css">
+    <link rel="stylesheet" href="../css/depositstyle.css">
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <%- include("partials/navbar") -%>
+
+    <section class="home">
+        <div class="text">Deposit cash</div>
+
+
+        <div class="bottomCont">
+          <div class="added">
+            <% if (deposited) { %>
+              Successfully added the requested amount to your balance.
+            <% } %>
+          </div>
+
+            <!--html for the login form-->
+            <div class="form login">
+              <div class="form-content">
+    
+                <div class="form-text">Deposit $USD</div>
+                <div class="big-icon"><i class='bx bxs-bank'></i></div>
+    
+                <form action="/deposit" method="post">
+                  <div class="field input-field">
+                    <input name="deposit_amount" type="number" step="0.01" min=0 placeholder="Amount of $USD" class="input">
+                  </div>
+    
+                  <div class="field button-field">
+                    <button id="test" type="submit">Deposit!</button>
+                  </div>
+                  <input name="userId" value="<%= userId %>" type="hidden">
+                </form>
+              </div>
+            </div>
+    </section>
+
+    <!--JavaScript-->
+    <script src="../js/navbar.js"></script>
+
+</body>
+</html>

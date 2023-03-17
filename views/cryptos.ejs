@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptos</title>
+    <link rel="icon" type="image/doge-icon" href="../img/favicon.ico"> <!--such wow! doge :)-->
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/dashboardstyle.css">
+    <link rel="stylesheet" href="../css/cryptosstyle.css">
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <%- include("partials/navbar") -%>
+
+    <section class="home">
+        <div class="text">Crypto Currencies</div>
+
+        <div class="description-card"> <!--description header for the different cryptos-->
+            <div class="desc number">#</div>
+            <div class="desc">Name</div>
+            <div class="desc">Price in $</div>
+            <div class="desc">Market Cap</div>
+            <div class="desc">Last 7 Days</div>
+        </div>
+
+        <% tokens.forEach((token) => { %>
+            <div class="long-card">
+                <div class="testing number"><%= token.ranked %></div>
+                <div class="testing">
+                    <div class="crypto-container">
+                        <div class="crypto-icon"><img src="<%= token.token_logo_img %>" alt="token-icon"></div>
+                        <div class="crypto-name"><%= token.name %></div>
+                        <div class="crypto-abbreviation"> <%= token.name_short %></div>
+                    </div>
+                </div>
+                <div class="testing"><%= token.price %></div>
+                <div class="testing"><%= token.market_cap %></div>
+                <div class="testing"><img src="<%= token.chart_last_week_img %>" alt="token-chart"></div>
+            </div>
+        <% }) %>
+        
+        <div class="spacer"></div> <!--so cards have a bit of space on bottom-->
+    </section>
+    <!--JavaScript-->
+    <script src="../js/navbar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krypto Trading</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="./css/indexstyle.css">
+
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body> 
+    <div class="header"> 
+      <div class="logocont">
+        <a href="https://de.wikipedia.org/wiki/Informatik" class="logo">
+          Ergänzungsfach Informatik
+        </a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="topCont">
+        <div class="big">Kryptotrader</div>
+        <div class="names">von Fabian, Miguel und Nico</div>
+      </div>
+        
+      <div class="bottomCont">
+
+        <div class="form login">
+          <div class="form-content">
+
+            <header>Login</header>
+
+            <form action="/login" method="post">
+              <div class="field input-field">
+                <input type="" placeholder="Nutzername" class="input" name="username">
+              </div>
+
+              <div class="field input-field">
+                <input type="password" placeholder="Passwort" class="password" name="password">
+                <i class='bx bx-hide eye-icon'></i>
+              </div>
+
+              <% if (wrong) { %>
+                <div id="wrongPw"><i>Nutzername oder Passwort ist falsch...</i></div>
+              <% } %>
+
+              <div class="field button-field">
+                <button type="submit">Login</button>
+              </div>
+
+              <div class="form-link">
+                <span>Kein Account? <a href="register" class="link signup-link">Signup</a></span>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+        
+    </div>
+
+    <div class="footer">
+        <div class="copyright">Copyright ©  Fabutech, mglhbr, ncwthrch 2023</div>
+    </div>
+
+    <!--JavaScript-->
+    <script src="js/hide-show.js"></script>
+</body>
+</html>

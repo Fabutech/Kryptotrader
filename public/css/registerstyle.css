@@ -1,0 +1,182 @@
+/*Google Fonts - Poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif; /* add chosen poppins fonts for all elements*/ 
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+  background-image: url('../img/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+
+/*HEADER STYLES*/
+  .header {
+    display: flex;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    font-size: 25px;
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  .logocont {
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    justify-content: center;
+    box-shadow: 2px 2px 20px rgb(0, 0, 0);
+  }
+
+  .logocont a {
+    text-decoration: none;
+  }
+
+
+  .right {
+    justify-content: end;
+  }
+
+/*CONTENT STYLES*/
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex: 1;
+    gap: 20px;
+  }
+
+  .bottomCont {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .form {
+    max-width: 430px;
+    width: 100%;
+    border-radius: 6px;
+    background-color: white;
+    color: black;
+    padding: 30px;
+    box-shadow: 2px 2px 20px rgb(0, 0, 0);
+  }
+
+  header {
+    font-size: 28px;
+    font-weight: 600;
+    color: #232826;
+    text-align: center;
+  }
+
+  form {
+    margin-top: 30px;
+    box-sizing: border-box;
+  }
+
+  form .field {
+    height: 45px;
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+  }
+
+  .field button,
+  .field input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+  }
+
+  .field input{
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid #CACACA;
+    width: 400px;
+  }
+
+  .field input:focus {
+    border-bottom-width: 2px;
+  }
+
+  .field button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.116);
+  }
+
+  .field button:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+
+  .eye-icon {
+    font-size: 18px;
+    position: absolute;
+    color: #8b8b8b;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .form-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .form-link span,
+  .form-link span a {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .form a {
+    text-decoration: none;
+  }
+
+  .form a:hover {
+    text-decoration: underline;
+  }
+
+    /*for the error message id the passwords aren't the same*/
+    #notSamePw {
+      margin-top: 8px;
+      color: rgb(219, 36, 36);
+      text-align: center;
+      font-size: 14px;
+    }
+
+
+  /*FOOTER STYLES*/
+  .footer {
+    display: flex;
+
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+  }
