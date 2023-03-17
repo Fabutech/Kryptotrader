@@ -4,18 +4,18 @@ const bodyParser = require('body-parser');
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 
-// Own Modules
+// Own Modules from /modules
 const otherFunctions = require('./modules/otherFunctions');
 const getFunctions = require('./modules/getFunctions');
 const postFunctions = require('./modules/postFunctions');
 
-// Express initialization
+// Express initialization with view engine "ejs" and the static files in the public directory, as well as body-parser enabled
 const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// Mongoose initialization
+// Mongoose initialization and connection to the database
 mongoose.set('strictQuery', false);
 mongoose.connect("mongodb+srv://fabutech:A1b2C3d4@cluster0.a92liiy.mongodb.net/cryptos");
 console.log("Connected to Mongo");
@@ -26,19 +26,20 @@ const User = otherFunctions.createUser(mongoose);
 const Portfolio = otherFunctions.createPortfolio(mongoose);
 
 // GET Requests
-// Get request for the root which returns the index page
+// Get request for the root which renders the index page for the user login
 app.get("/", (req, res) => {
     res.render("index", {wrong: false})
 })
 
+// Get request for the /register page which renders the registration page
 app.get("/register", (req, res) => {
     res.render("register", {wrong: 0});
 })
 
-app.get("/aaa", (req, res) => {
-    res.send(111);
-})
-
+// Get requests for all the different pages when logged in
+// All get requests end with /:userId => The link the get request is made to ends with the user id (which is stored in the database)
+// This link makes it possible to check wether or not the user exists and to display the user specific content
+// The corresponding function from getFunctions is being called
 app.get("/dashboard/:userId", (req, res) => {
     getFunctions.getDashborard(req, res, User, Token, Portfolio);
 })
@@ -59,6 +60,7 @@ app.get("/deposit/:userId", (req, res) => {
 })
 
 // POST Request
+// Post requests for all forms that are in the html/ejs pages which will all call the corresponding functions from the postFunctions
 app.post("/login", (req, res) => {
     postFunctions.postLogin(req, res, User);
 })
@@ -79,7 +81,7 @@ app.post("/sell", (req, res) => {
     postFunctions.postSell(req, res, User, Token, Portfolio)
 })
 
-// Express App listens on localhost:3000
+// Express App listens on the specified port
 app.listen(3000, function() {
     console.log("Server successfully started on port 3000");
 });

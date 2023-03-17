@@ -1,4 +1,6 @@
+// Functions for creating the Database Objects
 
+// Function which creates a schema for the tokens collection from the database and then with that schema creates a object of that collection and returns it
 function createToken(mongoose) {
     const tokenSchema = {
         name: String,
@@ -19,6 +21,7 @@ function createToken(mongoose) {
     return Token;
 }
 
+// Function which creates a schema for the users collection from the database and then with that schema creates a object of that collection and returns it
 function createUser(mongoose) {
     const userSchema = {
         username: String,
@@ -41,6 +44,7 @@ function createUser(mongoose) {
     return User;
 }
 
+// Function which creates a schema for the portfolios collection from the database and then with that schema creates a object of that collection and returns it
 function createPortfolio(mongoose) {
     const portfolioSchema = {
         user: String,
@@ -55,6 +59,7 @@ function createPortfolio(mongoose) {
     return Portfolio;
 }
 
+// The functions are being exported so they can be imported from app.js/server.js
 module.exports = {
     createToken: createToken,
     createUser: createUser,
