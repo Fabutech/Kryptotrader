@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 // Mongoose initialization and connection to the database
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb+srv://fabutech:A1b2C3d4@cluster0.a92liiy.mongodb.net/cryptos");
+mongoose.connect("db_connection_link");
 console.log("Connected to Mongo");
 
 // MongoDB collection setups through the corresponding functions from otherFunctions
