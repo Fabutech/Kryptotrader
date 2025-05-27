@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 // Mongoose initialization and connection to the database
 mongoose.set('strictQuery', false);
-mongoose.connect("db_connection_link");
+mongoose.connect("mongodb+srv://server:kbcjQJU2MQFn6mgx@kryptocluster.zd3owz1.mongodb.net/?retryWrites=true&w=majority&appName=KryptoCluster");
 console.log("Connected to Mongo");
 
 // MongoDB collection setups through the corresponding functions from otherFunctions
@@ -82,6 +82,6 @@ app.post("/sell", (req, res) => {
 })
 
 // Express App listens on the specified port
-app.listen(3000, function() {
-    console.log("Server successfully started on port 3000");
+app.listen(80, function() {
+    console.log("Server successfully started on port 80");
 });

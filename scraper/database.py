@@ -6,7 +6,7 @@ from tqdm import tqdm
 # This function creates a new connection to the project database on MongoDB and saves the connection in a variable called client and returns it
 def get_database():
     # Connection string for our specific database project with the according user
-    CONNECTION_STRING = "mongodb://fabutech:A1b2C3d4@ac-ztdqsw1-shard-00-00.a92liiy.mongodb.net:27017,ac-ztdqsw1-shard-00-01.a92liiy.mongodb.net:27017,ac-ztdqsw1-shard-00-02.a92liiy.mongodb.net:27017/?ssl=true&replicaSet=atlas-o46h0m-shard-0&authSource=admin&retryWrites=true&w=majority"
+    CONNECTION_STRING = "mongodb+srv://server:kbcjQJU2MQFn6mgx@kryptocluster.zd3owz1.mongodb.net/?retryWrites=true&w=majority&appName=KryptoCluster"
 
     # Client is being created with the connection string
     client = MongoClient(CONNECTION_STRING, tls=True, tlsAllowInvalidCertificates=True)

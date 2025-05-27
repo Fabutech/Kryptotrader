@@ -1,6 +1,7 @@
 # Importing all required modules for
 # Selenium
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 # Sleeping and to get the current date and time
@@ -23,19 +24,24 @@ def dict_to_json(dict_data, json_file_path):
 
 # Function which downloads, creates and returns the Selenium-Chrome browser 
 def get_driver(show_browser, max_win=0):
-    # Options which are required for a good Selenium experience
     options = webdriver.ChromeOptions()
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument('log-level=OFF')
-    if max_win == 1: # If the browser window should be maximized or not
+
+    if max_win == 1:
         options.add_argument('--start-maximized')
-    if show_browser == 0: # If the browser window should be shown or not
+    if show_browser == 0:
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
-    # The driver is being downloaded from the Internet and setup with the given options
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
+    driver_path = ChromeDriverManager().install()
+
+    # Create a proper Service object
+    service = Service(executable_path=driver_path)
+
+    # Use the Service object
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
 
 # The main function in which the data is being scraped
@@ -60,8 +66,8 @@ def scrape(filename, show_browser=1):
         # All the html table elements of the table that contains all 100 tokens are searched and stored in table_elems
         # The while True loop is there to make sure the website already has fully loaded up and prevent the scraping process from hanging up
         while True:
-            try:
-                table_elems = driver.find_elements(By.XPATH, "/html/body/div[1]/div/div[1]/div[2]/div/div[1]/div[4]/table/tbody/tr")
+            try:                                           
+                table_elems = driver.find_elements(By.XPATH, "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[5]/div/table/tbody/tr")
                 break 
             except:
                 continue
@@ -74,10 +80,10 @@ def scrape(filename, show_browser=1):
                 # All the data is being scraped for each crypto token and saved into variables
                 # Text data can be scraped just by calling .text on a web-element, the chart link and the icons-class can be scraped by calling .get_attribute(<attribute name>)
                 # For each trend data the icon must be checked to determine wether the trend is upwards or downwards and if the trend is downwards, then a "-" is added in front
-                name = table_elems[i].find_element(By.XPATH, "./td[3]/div/a/div/div/p").text
-                name_short = table_elems[i].find_element(By.XPATH, "./td[3]/div/a/div/div/div/p").text
-                token_logo_img = table_elems[i].find_element(By.XPATH, "./td[3]/div/a/div/img").get_attribute("src")
-                price = table_elems[i].find_element(By.XPATH, "./td[4]/div/a/span").text
+                name = table_elems[i].find_element(By.XPATH, "./td[3]/div/a/span/div/div/p").text
+                name_short = table_elems[i].find_element(By.XPATH, ".td[3]/div/a/span/div/div/div/p").text
+                token_logo_img = table_elems[i].find_element(By.XPATH, ".td[3]/div/a/span/img").get_attribute("src")
+                price = table_elems[i].find_element(By.XPATH, "./td[4]/div/span").text
                 last_hour = table_elems[i].find_element(By.XPATH, "./td[5]/span").text
                 last_hour_upDown = table_elems[i].find_element(By.XPATH, "./td[5]/span/span").get_attribute("class")
                 if last_hour_upDown == "icon-Caret-down": 
@@ -92,8 +98,8 @@ def scrape(filename, show_browser=1):
                     last_week = "-" + last_week
                 market_cap = table_elems[i].find_element(By.XPATH, "./td[8]/p/span[2]").text
                 volume_24h = table_elems[i].find_element(By.XPATH, "./td[9]/div/a/p").text
-                circulating_supply = table_elems[i].find_element(By.XPATH, "./td[10]/div/div[1]/p").text
-                chart_last_week_img = table_elems[i].find_element(By.XPATH, "./td[11]/a/img").get_attribute("src")
+                circulating_supply = table_elems[i].find_element(By.XPATH, "./td[10]/div/div/div[1]/span").text
+                chart_last_week_img = table_elems[i].find_element(By.XPATH, "./td[11]/img").get_attribute("src")
                 
                 # All the scraped data is saved as a dictionary inside of a dictionary with its full name as the according key
                 scraped_data.append({
@@ -121,7 +127,6 @@ def scrape(filename, show_browser=1):
     
 
     # The scraped data is saved to a json file in the current directory
-    print(scraped_data)
     dict_to_json(scraped_data, filename + ".json")
 
 if __name__ == '__main__':

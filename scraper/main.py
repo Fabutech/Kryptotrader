@@ -9,7 +9,7 @@ if __name__ == '__main__':
     file_name = "scraped_data_1000"
     
     while True:
-        if datetime.now().minute == 7:
+        if datetime.now().minute == 00:
             try:
                 print(scraper.time_now(), "Scraper successfully started, new crypto data is being scraped.")
                 
